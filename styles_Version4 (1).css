@@ -1,0 +1,44 @@
+:root{
+  --accent:#1f8ef1;
+  --bg:#f7f9fb;
+  --card:#fff;
+  --muted:#666;
+  --danger:#ff5c5c;
+}
+
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial; margin:0; background:var(--bg); color:#111}
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--card);box-shadow:0 1px 6px rgba(0,0,0,.06)}
+.brand{margin:0;font-size:1.2rem}
+.main-nav a{margin-right:10px;color:inherit;text-decoration:none;padding:6px 8px;border-radius:6px}
+.main-nav a.active{background:var(--accent);color:white}
+.header-actions .btn{padding:6px 10px;border-radius:6px;border:none;background:var(--accent);color:white;cursor:pointer}
+
+.container{max-width:1000px;margin:20px auto;padding:0 16px}
+.card{background:var(--card);padding:12px;border-radius:8px;border:1px solid #eee;margin-bottom:12px}
+.hero{text-align:left}
+.muted{color:var(--muted);font-size:.95rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.row{display:flex;gap:8px}
+.btn{background:var(--accent);color:#fff;padding:8px 10px;border:none;border-radius:6px;cursor:pointer}
+.small{padding:6px 8px;font-size:.9rem}
+.secondary{background:#f0f0f0;color:#111;border:1px solid #ddd}
+.danger{background:var(--danger);color:white;border:none;padding:8px;border-radius:6px;cursor:pointer}
+
+.admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.form-actions{display:flex;gap:8px;margin-top:8px}
+ul{list-style:none;padding:0;margin:0}
+li.entry{display:flex;justify-content:space-between;align-items:center;padding:6px;border-bottom:1px solid #f0f0f0}
+li.entry .meta{flex:1}
+.input-inline{width:100%;padding:8px;margin-top:6px;border:1px solid #ddd;border-radius:6px}
+
+/* Modal */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);z-index:50}
+.modal.hidden{display:none}
+.modal-content{background:white;padding:18px;border-radius:8px;max-width:960px;width:94%;max-height:90vh;overflow:auto;position:relative}
+.modal-content .close{position:absolute;right:10px;top:8px;border:none;background:transparent;font-size:1.5rem;cursor:pointer}
+
+.site-footer{text-align:center;padding:12px 0;color:var(--muted)}
+@media (max-width:700px){
+  .admin-grid{grid-template-columns:1fr}
+}

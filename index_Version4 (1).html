@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ZEE WEB</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="brand">ZEE WEB</h1>
+    <nav class="main-nav">
+      <a href="#" class="nav-link" data-route="home">Home</a>
+      <a href="#" class="nav-link" data-route="music">Music</a>
+      <a href="#" class="nav-link" data-route="videos">Videos</a>
+      <a href="#" class="nav-link" data-route="game">Game</a>
+    </nav>
+    <div class="header-actions">
+      <button id="adminBtn" class="btn small">Admin</button>
+    </div>
+  </header>
+
+  <main id="app" class="container">
+    <!-- Views rendered here -->
+  </main>
+
+  <!-- Admin modal -->
+  <div id="adminModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close" data-target="adminModal">&times;</button>
+      <h2>Panel Admin</h2>
+
+      <section id="adminLoginSection">
+        <form id="adminLoginForm">
+          <label>Password admin:
+            <input id="adminPassword" type="password" />
+          </label>
+          <button type="submit" class="btn">Masuk</button>
+          <span id="adminLoginStatus" class="muted"></span>
+        </form>
+      </section>
+
+      <section id="adminControls" class="hidden">
+        <h3>Kelola Situs</h3>
+
+        <div class="admin-grid">
+          <div class="card">
+            <h4>Music (Tambah / Hapus)</h4>
+            <form id="musicForm">
+              <input id="musicTitle" placeholder="Judul" required />
+              <input id="musicArtist" placeholder="Artis (opsional)" />
+              <input id="musicUrl" placeholder="URL audio (mp3/ogg)" required />
+              <div class="form-actions">
+                <button type="submit" class="btn">Tambah Musik</button>
+              </div>
+            </form>
+            <ul id="musicList"></ul>
+          </div>
+
+          <div class="card">
+            <h4>Videos (Tambah / Hapus)</h4>
+            <form id="videoForm">
+              <input id="videoTitle" placeholder="Judul" required />
+              <input id="videoUrl" placeholder="URL (YouTube atau mp4)" required />
+              <div class="form-actions">
+                <button type="submit" class="btn">Tambah Video</button>
+              </div>
+            </form>
+            <ul id="videoList"></ul>
+          </div>
+
+          <div class="card">
+            <h4>Items The Forge & Fish It</h4>
+            <form id="itemForm">
+              <input id="itemId" type="hidden" />
+              <input id="itemName" placeholder="Nama item" required />
+              <input id="itemPrice" type="number" placeholder="Harga (angka)" required />
+              <select id="itemMenu">
+                <option value="THE FORGE">THE FORGE</option>
+                <option value="FISH IT">FISH IT</option>
+              </select>
+              <input id="itemDesc" placeholder="Deskripsi (opsional)" />
+              <input id="itemImage" placeholder="Image URL (opsional)" />
+              <div class="form-actions">
+                <button type="submit" class="btn">Simpan Item</button>
+                <button id="itemResetBtn" type="button" class="secondary">Reset</button>
+              </div>
+            </form>
+            <ul id="itemsList"></ul>
+          </div>
+        </div>
+
+        <div class="admin-actions">
+          <button id="exportBtn" class="btn">Ekspor konfigurasi (JSON)</button>
+          <input id="importFile" type="file" accept=".json" />
+          <button id="clearDataBtn" class="danger">Reset semua data</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Simple templates -->
+  <template id="homeTpl">
+    <section class="hero card">
+      <h2>Selamat datang di ZEE WEB</h2>
+      <p>Selamat datang di situs resmi ZEE. Pilih menu di atas untuk menjelajah music, video, dan game.</p>
+    </section>
+  </template>
+
+  <template id="musicTpl">
+    <section>
+      <h2>Music</h2>
+      <div id="player" class="card">
+        <div id="nowPlaying" class="muted">Tidak ada lagu dipilih</div>
+        <audio id="audioPlayer" controls></audio>
+        <ul id="playlist"></ul>
+      </div>
+    </section>
+  </template>
+
+  <template id="videosTpl">
+    <section>
+      <h2>Videos</h2>
+      <div id="videosGrid" class="grid"></div>
+    </section>
+  </template>
+
+  <template id="gameTpl">
+    <section>
+      <h2>Game - Roblox</h2>
+      <div class="card">
+        <p>Pilih kategori Roblox:</p>
+        <div class="row">
+          <button class="btn nav-sub" data-sub="THE FORGE">The Forge</button>
+          <button class="btn nav-sub" data-sub="FISH IT">Fish It</button>
+        </div>
+      </div>
+      <div id="gameContent"></div>
+    </section>
+  </template>
+
+  <footer class="site-footer">
+    <small>© ZEE WEB</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
